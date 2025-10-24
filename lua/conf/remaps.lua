@@ -1,5 +1,6 @@
 vim.keymap.set("n", "<leader>x", vim.cmd.Ex)
-vim.keymap.set("n", "<C-T>", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<C-T>", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<C-t>", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>git", vim.cmd.Git)
 
 
@@ -13,6 +14,7 @@ vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>r", function() harpoon:list():remove() end)
 vim.keymap.set("n", "<C-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
@@ -25,22 +27,8 @@ vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
 
 
-
-lspOnAttach = function(client, bufnr)
-	local opts = {buffer = bufnr, noremap = true}
-
-	vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("n", "<C-d>", vim.diagnostic.open_float, opts)
-	vim.keymap.set("n", "<", vim.diagnostic.goto_next, opts)
-	vim.keymap.set("n", ">", vim.diagnostic.goto_prev, opts)
-end
-
-
-
-
 vim.keymap.set('n', '<C-f>', telescopeBuiltin.find_files, {})
 vim.keymap.set('n', '<C-g>', telescopeBuiltin.git_files, {})
 vim.keymap.set('n', '<leader>gr', function()
-	builtin.grep_string({serach = vim.fn.input("Grep > ")})
+	telescopeBuiltin.grep_string({serach = vim.fn.input("Grep > ")})
 end)
