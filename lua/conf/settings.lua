@@ -12,7 +12,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/nvim/undo"
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undo"
 vim.opt.undofile = true
  
 vim.opt.hlsearch = true
